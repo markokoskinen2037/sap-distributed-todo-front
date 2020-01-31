@@ -29,9 +29,10 @@ class LoginForm extends React.Component {
     }
 
     axios
-      .post(`${ basePath }/users/login`, user)
+      .post(`${basePath}/users/login`, user)
       .then(response => {
         localStorage.setItem('user', JSON.stringify({ username: response.data.username, token: response.data.token }))
+        this.props.setLoggedIn(true)
       })
       .catch(error => {
         alert('Login not succesful')
@@ -45,14 +46,14 @@ class LoginForm extends React.Component {
           <label>
             Username:
           </label>
-          <br/>
+          <br />
           <input type="text" value={this.state.username} onChange={this.handleUsername} />
         </div>
         <div>
           <label>
             Password:
           </label>
-          <br/>
+          <br />
           <input type="password" value={this.state.password} onChange={this.handlePassword} />
         </div>
         <div>
