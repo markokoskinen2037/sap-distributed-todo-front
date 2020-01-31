@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#logout{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: red;
+}
