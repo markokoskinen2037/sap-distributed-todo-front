@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { basePath } from "./util.js"
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class SignUpForm extends React.Component {
     console.log(user)
 
     axios
-      .post('https://sap-api-gateway.herokuapp.com/users/register', user)
+      .post(`${basePath}/users/register`, user)
       .then(response => {
         console.log(response)
         alert("Moikka")
