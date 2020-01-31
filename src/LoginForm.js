@@ -5,7 +5,7 @@ import { basePath } from "./util.js"
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', message: null };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -35,7 +35,9 @@ class LoginForm extends React.Component {
         this.props.setLoggedIn(true)
       })
       .catch(error => {
-        alert('Login not succesful')
+        this.setState({
+          message: "Invalid username or password?"
+        })
       })
   }
 
@@ -58,6 +60,7 @@ class LoginForm extends React.Component {
         </div>
         <div>
           <input type="submit" value="Submit" />
+          {this.state.message && <div style={{ color: "red" }}>{this.state.message}</div>}
         </div>
       </form>
     );
