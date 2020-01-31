@@ -30,7 +30,7 @@ class SignUpForm extends React.Component {
     console.log(user)
 
     axios
-      .post('http://localhost:3003/users/register', user)
+      .post('https://sap-api-gateway.herokuapp.com/users/register', user)
       .then(response => {
         console.log(response)
         alert("Moikka")
