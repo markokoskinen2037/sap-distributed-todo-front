@@ -42,13 +42,11 @@ export default class App extends Component {
       )
     } else {
       return (
-        <div>
-          <header>
-            <h1>Login</h1>
-            <LoginForm setLoggedIn={this.setLoggedIn.bind(this)} />
-            <h1>Sign up</h1>
-            <SignUpForm />
-          </header >
+        <div style={{ textAlign: "center" }}>
+          <h1>Login</h1>
+          <LoginForm setLoggedIn={this.setLoggedIn.bind(this)} />
+          <h1>Sign up</h1>
+          <SignUpForm />
         </div>
       )
     }
