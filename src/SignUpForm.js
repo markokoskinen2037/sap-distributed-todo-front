@@ -4,7 +4,7 @@ import axios from 'axios';
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', password: ''};
+    this.state = { username: '', password: '' };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -12,11 +12,11 @@ class SignUpForm extends React.Component {
   }
 
   handleUsername(event) {
-    this.setState({username: event.target.value});
+    this.setState({ username: event.target.value });
   }
 
   handlePassword(event) {
-    this.setState({password: event.target.value});
+    this.setState({ password: event.target.value });
   }
 
   handleSubmit(event) {
@@ -28,19 +28,19 @@ class SignUpForm extends React.Component {
     }
 
     console.log(user)
-/*
+
     axios
-      .post('https://sap-api-gateway.herokuapp.com/users/register', user)
+      .post('http://localhost:3003/users/register', user)
       .then(response => {
         console.log(response)
         alert("Moi")
       })
-      */
-    axios.get('https://sap-api-gateway.herokuapp.com/users/')
-    .then(response => {
-      console.log(response)
-    })
-    
+
+    // axios.get('https://sap-api-gateway.herokuapp.com/users/')
+    // .then(response => {
+    //   console.log(response)
+    // })
+
   }
 
   render() {
@@ -50,14 +50,14 @@ class SignUpForm extends React.Component {
           <label>
             Username:
           </label>
-          <br/>
+          <br />
           <input type="text" value={this.state.name} onChange={this.handleUsername} />
         </div>
         <div>
           <label>
             Password:
           </label>
-          <br/>
+          <br />
           <input type="password" value={this.state.password} onChange={this.handlePassword} />
         </div>
         <div>
