@@ -5,7 +5,7 @@ import { basePath } from "./util.js"
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', message: null };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -31,10 +31,13 @@ class SignUpForm extends React.Component {
     axios
       .post(`${basePath}/users/register`, user)
       .then(response => {
-        alert("Hi " + response.data.username + "!")
+        localStorage.setItem('user', JSON.stringify({ username: response.data.username, token: response.data.token }))
+        this.props.setLoggedIn(true)
       })
       .catch(error => {
-        alert('Sign up not succesful')
+        this.setState({
+          message: "Sign up failed."
+        })
       })
   }
 
@@ -56,7 +59,7 @@ class SignUpForm extends React.Component {
           <input type="password" value={this.state.password} onChange={this.handlePassword} />
         </div>
         <div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" /> {this.state.message && <span style={{ color: "red" }}>{this.state.message}</span>}
         </div>
       </form>
     );
