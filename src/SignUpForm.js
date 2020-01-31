@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -19,8 +20,27 @@ class SignUpForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Username: ' + this.state.username + '\nPassword: ' + this.state.password);
     event.preventDefault();
+
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
+    console.log(user)
+/*
+    axios
+      .post('https://sap-api-gateway.herokuapp.com/users/register', user)
+      .then(response => {
+        console.log(response)
+        alert("Moi")
+      })
+      */
+    axios.get('https://sap-api-gateway.herokuapp.com/users/')
+    .then(response => {
+      console.log(response)
+    })
+    
   }
 
   render() {
