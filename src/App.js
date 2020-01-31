@@ -13,16 +13,33 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem("user"))
+    if (user && user.token) {
+      this.setLoggedIn(true)
+    }
+  }
+
   setLoggedIn(hasLoggedIn) {
     this.setState({
       loggedIn: hasLoggedIn
     })
   }
 
+  logout() {
+    this.setLoggedIn(false)
+    localStorage.removeItem("user")
+  }
+
 
   render() {
     if (this.state.loggedIn) {
-      return <div>Welcome, here u can add todos</div>
+      return (
+        <div>
+          <div>Welcome, here u can add todos</div>
+          <button type="button" onClick={() => this.logout()}>Logout</button>
+        </div>
+      )
     } else {
       return (
         <div>
