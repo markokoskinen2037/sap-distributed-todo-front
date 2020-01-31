@@ -28,20 +28,14 @@ class SignUpForm extends React.Component {
       password: this.state.password
     }
 
-    console.log(user)
-
     axios
       .post(`${basePath}/users/register`, user)
       .then(response => {
-        console.log(response)
-        alert("Moikka")
+        alert("Hi " + response.data.username + "!")
       })
-
-    // axios.get('https://sap-api-gateway.herokuapp.com/users/')
-    // .then(response => {
-    //   console.log(response)
-    // })
-
+      .catch(error => {
+        alert('Sign up not succesful')
+      })
   }
 
   render() {
